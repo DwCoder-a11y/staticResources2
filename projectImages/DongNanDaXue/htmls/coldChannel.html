@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>冷通道</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .cold-channel {
+        color: #fff;
+        width: 160px;
+        height: 120px;
+        background: linear-gradient(90deg, #09162cb3 0%, #05051580 100%);
+      }
+      .cold-channel .cold-channel-header {
+        text-align: center;
+        padding: 5px 0px;
+        font-weight: bold;
+        background:
+          linear-gradient(270deg, #3d5d8c99 0%, #1e7dce 51%, #3d5d8c99 100%),
+          linear-gradient(90deg, #09162cb3 0%, #05051580 100%);
+      }
+      .cold-channel-main ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .cold-channel-main ul li {
+        padding: 8px 0px;
+        text-align: center;
+      }
+
+      .cold-channel-main ul li .cold-channel-main-list-item-label {
+        color: #b7e8ff;
+        font-weight: 500;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cold-channel">
+      <header class="cold-channel-header">
+        <span id="name">冷通道</span>
+      </header>
+      <main class="cold-channel-main">
+        <ul class="cold-channel-main-list">
+          <li class="cold-channel-main-list-item">
+            <span class="cold-channel-main-list-item-label">温度 :</span>
+            <span class="cold-channel-main-list-item-value">
+              <span id="temperature">25</span>
+              <span>℃</span>
+            </span>
+          </li>
+          <li class="cold-channel-main-list-item">
+            <span class="cold-channel-main-list-item-label">湿度 :</span>
+            <span class="cold-channel-main-list-item-value">
+              <span id="humidity">50</span>
+              <span>%</span>
+            </span>
+          </li>
+        </ul>
+      </main>
+    </div>
+  </body>
+
+  <script>
+    window.addEventListener("load", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get("name") || "--";
+      const humidity = urlParams.get("humidity") || "0";
+      const temperature = urlParams.get("temperature") || "0";
+
+      document.getElementById("name").textContent = name;
+      document.getElementById("humidity").textContent = humidity;
+      document.getElementById("temperature").textContent = temperature;
+    });
+  </script>
+</html>

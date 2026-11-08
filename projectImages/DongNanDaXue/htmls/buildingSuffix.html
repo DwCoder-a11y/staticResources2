@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>建筑标签后缀</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .building-suffix {
+        color: #fff;
+        width: 160px;
+        height: 160px;
+        background: linear-gradient(90deg, #09162cb3 0%, #05051580 100%);
+        border-radius: 5px;
+        overflow: hidden;
+        font-size: 14px;
+      }
+
+      .building-suffix-main ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        padding-left: 10px;
+        padding-top: 10px;
+      }
+
+      .building-suffix-main ul li {
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .building-suffix-main ul li:not(:first-child) {
+        margin-top: 10px;
+      }
+
+      .building-suffix-main ul li .building-suffix-main-list-item-label {
+        display: inline-block;
+        color: #b7e8ff;
+        font-weight: 500;
+        margin-right: 5px;
+        width: 80px;
+        text-align: right;
+      }
+      .building-suffix-main ul li .building-suffix-main-list-item-value span:first-child {
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="building-suffix">
+      <main class="building-suffix-main">
+        <ul class="building-suffix-main-list">
+          <li class="building-suffix-main-list-item">
+            <span class="building-suffix-main-list-item-label">入住总人数 :</span>
+            <span class="building-suffix-main-list-item-value">
+              <span id="total-occupants">0</span>
+              <span>人</span>
+            </span>
+          </li>
+          <li class="building-suffix-main-list-item">
+            <span class="building-suffix-main-list-item-label">男生 :</span>
+            <span class="building-suffix-main-list-item-value">
+              <span id="male">0</span>
+              <span>人</span>
+            </span>
+          </li>
+          <li class="building-suffix-main-list-item">
+            <span class="building-suffix-main-list-item-label">女生 :</span>
+            <span class="building-suffix-main-list-item-value">
+              <span id="female">0</span>
+              <span>人</span>
+            </span>
+          </li>
+          <li class="building-suffix-main-list-item">
+            <span class="building-suffix-main-list-item-label">楼栋数 :</span>
+            <span class="building-suffix-main-list-item-value">
+              <span id="building-count">0</span>
+              <span>栋</span>
+            </span>
+          </li>
+          <li class="building-suffix-main-list-item">
+            <span class="building-suffix-main-list-item-label">床位数 :</span>
+            <span class="building-suffix-main-list-item-value">
+              <span id="bed-count">0</span>
+              <span>个</span>
+            </span>
+          </li>
+        </ul>
+      </main>
+    </div>
+  </body>
+
+  <script>
+    window.addEventListener("load", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const totalOccupants = urlParams.get("totalOccupants") || "0";
+      const male = urlParams.get("male") || "0";
+      const female = urlParams.get("female") || "0";
+      const buildingCount = urlParams.get("buildingCount") || "0";
+      const bedCount = urlParams.get("bedCount") || "0";
+
+      document.getElementById("total-occupants").textContent = totalOccupants;
+      document.getElementById("male").textContent = male;
+      document.getElementById("female").textContent = female;
+      document.getElementById("building-count").textContent = buildingCount;
+      document.getElementById("bed-count").textContent = bedCount;
+    });
+  </script>
+</html>
